@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TripForge: plan your holiday with your own AI</title>
+    <meta name="description" content="Answer a few questions about your trip and TripForge builds a prompt you paste into your own AI. It researches your holiday with you and builds a private trip planner. Nothing you type leaves your browser." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script src="/theme-init.js"></script>
+    <script type="module" src="/src/site.ts"></script>
+    <script type="module" src="/src/home.ts"></script>
+  </head>
+  <body>
+    <!-- @header -->
+    <main id="main">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <span class="eyebrow">Your trip, your AI, your rules</span>
+            <h1>Plan the holiday. <em>Let your AI build the planner.</em></h1>
+            <p class="lead">
+              Answer a few questions about where you are going and what you love. TripForge turns them into one prompt for Claude, ChatGPT, Gemini or any AI.
+              Your AI researches the trip with you and builds a private planner: day by day plans, weather, webcams, runs, hikes, packing lists and more.
+            </p>
+            <div class="actions">
+              <a class="btn" href="/build">
+                Start planning
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a class="btn btn-ghost" href="#inspire">Not sure where to go?</a>
+            </div>
+            <p class="muted">Nothing you type leaves your browser. <a href="/faq#data">How we know</a></p>
+          </div>
+          <svg class="scene" viewBox="0 0 640 380" role="img" aria-labelledby="scene-title">
+            <title id="scene-title">A small plane flies over mountains towards a sunny beach with a palm tree</title>
+            <rect class="sky" width="640" height="380" rx="28" />
+            <circle class="sun" cx="500" cy="92" r="46" />
+            <g class="clouds">
+              <path class="cloud" d="M96 92a22 22 0 0 1 42-8 18 18 0 0 1 30 12 14 14 0 0 1-2 28H100a16 16 0 0 1-4-32Z" />
+              <path class="cloud" d="M330 60a16 16 0 0 1 30-6 13 13 0 0 1 22 9 10 10 0 0 1-2 20h-48a12 12 0 0 1-2-23Z" />
+            </g>
+            <path class="far" d="M0 250 90 150l60 60 70-95 90 120 60-55 80 85 70-70 120 110v75H0Z" />
+            <path class="snow" d="m220 115-22 30 12-4 10 10 10-12 12 6Z" />
+            <path class="near" d="M0 280c60-30 120-50 190-30s120 40 200 20 150-30 250 0v110H0Z" />
+            <path class="sand" d="M330 330c90-40 200-40 310-20v70H330Z" />
+            <g class="waves">
+              <path class="sea" d="M-40 330c40-10 80-10 120 0s80 10 120 0 80-10 120 0 80 10 120 0 80-10 120 0 80 10 120 0v60H-40Z" />
+            </g>
+            <g class="waves-2">
+              <path class="sea-2" d="M-40 350c40-8 80-8 120 0s80 8 120 0 80-8 120 0 80 8 120 0 80-8 120 0 80 8 120 0v40H-40Z" />
+            </g>
+            <path class="palm-trunk" d="M560 330c-6-40-2-80 12-110" />
+            <g class="palm-leaves">
+              <path class="palm-leaf" d="M572 220c-20-14-46-14-62 2 22-4 40 0 62-2Z" />
+              <path class="palm-leaf" d="M572 220c18-16 44-18 62-6-22 0-40 2-62 6Z" />
+              <path class="palm-leaf" d="M572 220c-6-22 2-42 20-52-8 18-12 34-20 52Z" />
+              <path class="palm-leaf" d="M572 220c-24 2-40 18-44 38 12-18 26-30 44-38Z" />
+            </g>
+            <path class="trail" d="M40 150 C 160 40, 300 40, 420 110 S 560 120, 600 60" />
+            <g class="flyer">
+              <path class="plane" d="M-14-3 10-3 16-8h4l-3 8 3 8h-4L10 3h-24l-4 5h-4l2-8-2-8h4Z" />
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <h2>Two ways to start</h2>
+          <div class="choice-cards">
+            <a class="choice" href="/build">
+              <strong>I know where I'm going</strong>
+              <span>Add your dates, where you stay and what you love. Your AI fills in the rest.</span>
+            </a>
+            <a class="choice" href="/build?mode=inspire">
+              <strong>Help me pick</strong>
+              <span>Tell it when, how far and what you like. Your AI suggests three to five places, then plans the one you choose.</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="inspire" aria-labelledby="inspire-title">
+        <div class="wrap">
+          <div class="inspire">
+            <h2 id="inspire-title">Spin for inspiration</h2>
+            <p class="muted">Pick a holiday theme, spin the wheel, and see where it sends you.</p>
+            <fieldset class="theme-chips" id="theme-chips">
+              <legend>Holiday theme</legend>
+            </fieldset>
+            <div class="wheel-area">
+              <div class="wheel-box">
+                <svg class="wheel-pointer" viewBox="0 0 32 36" aria-hidden="true" focusable="false"><path d="M16 36 2 6a14 14 0 0 1 28 0Z" /></svg>
+                <svg class="wheel" id="wheel" viewBox="0 0 300 300" aria-hidden="true" focusable="false"></svg>
+              </div>
+              <div>
+                <p class="visually-hidden" role="status" id="spin-status"></p>
+                <div id="postcard-live">
+                  <div class="postcard" id="postcard">
+                    <svg class="stamp" viewBox="0 0 52 60" aria-hidden="true" focusable="false">
+                      <rect x="1" y="1" width="50" height="58" rx="3" fill="none" stroke="currentColor" stroke-dasharray="3 3" opacity=".5" />
+                      <circle cx="26" cy="24" r="10" fill="#f2b33d" />
+                      <path d="M6 48c8-10 14-14 20-10s12 2 20-6v22H6Z" fill="#2f7d5b" />
+                    </svg>
+                    <p class="muted">Your postcard will appear here.</p>
+                    <h3>Where to?</h3>
+                    <p>Pick a theme, then press <strong>Spin the wheel</strong>.</p>
+                  </div>
+                </div>
+                <div class="actions" id="wheel-actions">
+                  <button class="btn" type="button" id="spin">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5" /></svg>
+                    Spin the wheel
+                  </button>
+                  <a class="btn btn-ghost" id="use-dest" href="/build" hidden>Plan this trip</a>
+                  <a class="btn btn-ghost" id="ai-suggest" href="/build?mode=inspire">Let my AI suggest instead</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <h2>What your AI can build for you</h2>
+          <div class="cards">
+            <div class="card">
+              <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" /></svg>
+              <h3>Day-by-day plans</h3>
+              <p>Morning, afternoon and evening for every day, with a plan B for bad weather.</p>
+            </div>
+            <div class="card">
+              <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 18a4 4 0 0 1 0-8 6 6 0 0 1 11.5 1.5A3.5 3.5 0 0 1 18 18Z" /><circle cx="17" cy="6" r="2.5" /></svg>
+              <h3>Weather & webcams</h3>
+              <p>Forecasts from Yr.no and Open-Meteo, typical climate for later dates, and live webcams where they exist.</p>
+            </div>
+            <div class="card">
+              <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 20 6-12 4 7 3-4 5 9Z" /><circle cx="17" cy="5" r="2" /></svg>
+              <h3>Runs & hikes</h3>
+              <p>Morning runs from where you stay, and hikes with walking times and a bad-weather backup.</p>
+            </div>
+            <div class="card">
+              <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 11l2 2 4-4" /><rect x="4" y="3" width="16" height="18" rx="2" /></svg>
+              <h3>Checklists</h3>
+              <p>Packing lists for each traveller, plus a pre-trip checklist that counts down to departure.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap narrow">
+          <div class="note">
+            <h2>Private by design</h2>
+            <p>
+              TripForge never asks for booking references, flight numbers or names, and the prompt tells your AI not to ask either.
+              Your planner can be a file on your phone, a page in your chat, a printout, or a website behind an email login.
+            </p>
+            <p><a href="/safe">What not to share with an AI, and why</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- @footer -->
+  </body>
+</html>

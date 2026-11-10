@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How it works · TripForge</title>
+    <meta name="description" content="How TripForge turns your answers into a prompt, and what your AI does with it." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script src="/theme-init.js"></script>
+    <script type="module" src="/src/site.ts"></script>
+  </head>
+  <body>
+    <!-- @header -->
+    <main id="main">
+      <div class="wrap narrow section prose">
+        <h1>How it works</h1>
+        <p class="lead">TripForge does not plan your trip. It writes a very good brief, so the AI you already use can plan it with you.</p>
+        <h2 class="visually-hidden">The five steps</h2>
+        <ol class="steps-list">
+          <li><h3>Fill in what you know</h3><p>Dates, where you are going (or that you do not know yet), how you travel and what you love. Only the first few questions are needed.</p></li>
+          <li><h3>Copy the prompt</h3><p>Your answers become one prompt, built in your browser. It includes privacy rules for the AI, how to research, and exactly what to build.</p></li>
+          <li><h3>Paste it into your AI</h3><p>Start a new, temporary chat in Claude, ChatGPT, Gemini or another AI, and paste. Switch on web search if your AI has it.</p></li>
+          <li><h3>Your AI researches and asks</h3><p>It looks up things to do, runs, hikes, webcams and events, proposes an outline, and asks you a batch of questions. Nothing is built until you say OK.</p></li>
+          <li><h3>It builds your planner</h3><p>In the format you chose, with placeholders like <code>[[ADD LOCALLY: hotel booking reference]]</code> for the private bits you fill in yourself.</p></li>
+        </ol>
+
+        <h2>Which format should I choose?</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Format</th><th scope="col">Good for</th><th scope="col">Privacy</th></tr></thead>
+            <tbody>
+              <tr><td>Single HTML file</td><td>Most people. Open it on your phone or laptop, even offline.</td><td>Private as long as it stays on your devices.</td></tr>
+              <tr><td>Page in your AI chat</td><td>Quick and easy, nothing to download.</td><td>Private unless you press Publish or Share.</td></tr>
+              <tr><td>Printable PDF</td><td>Paper lovers and trips with no signal.</td><td>As private as the paper.</td></tr>
+              <tr><td>Hosted website</td><td>Technical people and groups who want a shared site.</td><td>Only private behind a real login. <a href="/hosting">Hosting guide</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Why your own AI?</h2>
+        <p>Your AI can search the web as it is today, talk it through with you, and change the plan when you change your mind. TripForge just makes sure it starts with a good brief and safe habits.</p>
+
+        <h2>Weather, webcams and routes</h2>
+        <ul>
+          <li><strong>Weather</strong> comes from <a href="https://www.yr.no/">Yr.no</a> (MET Norway) and <a href="https://open-meteo.com/">Open-Meteo</a>. Both are free. A hosted site built by a coding agent can fetch Yr data on a schedule; other formats show Open-Meteo live and link to Yr.</li>
+          <li><strong>Webcams</strong> are only added when your AI finds a real one. No webcam, no section.</li>
+          <li><strong>Runs and hikes</strong> link to published routes. Only a coding agent building a website draws its own routes, with a proper routing engine. Chat AIs are told never to invent GPS coordinates.</li>
+        </ul>
+        <p><a class="btn" href="/build">Build my prompt</a></p>
+      </div>
+    </main>
+    <!-- @footer -->
+  </body>
+</html>

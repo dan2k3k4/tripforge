@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ · TripForge</title>
+    <meta name="description" content="Questions about TripForge, your data, and which AI to use." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script src="/theme-init.js"></script>
+    <script type="module" src="/src/site.ts"></script>
+  </head>
+  <body>
+    <!-- @header -->
+    <main id="main">
+      <div class="wrap narrow section faq">
+        <h1>Questions</h1>
+        <details id="data" open>
+          <summary>Do you store my data?</summary>
+          <div>
+            <p>No. TripForge has no server, no accounts and no analytics. Your answers are saved in your own browser (local storage) so you can come back later, and you can clear them with “Start over”.</p>
+            <p>You do not have to trust us on this: the site's security policy (<code>connect-src 'none'</code>) tells your browser to block every network request the page could make. Open your browser's developer tools and watch the Network tab while you type: nothing goes out.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Which AI works best?</summary>
+          <div><p>Any AI that can search the web. Paid tiers usually handle long prompts and big files better, but free tiers work for most trips, especially the single HTML file format.</p></div>
+        </details>
+        <details>
+          <summary>My AI says it cannot browse the web</summary>
+          <div><p>Look for a web search or browsing switch and turn it on. If there is none, the prompt tells your AI to say so and to mark anything it could not check with “check yourself”, instead of making things up.</p></div>
+        </details>
+        <details>
+          <summary>Why does it not ask for my flight number or booking?</summary>
+          <div><p>Your AI does not need them to plan, and on many plans chats can be stored or used for training. See <a href="/safe">Stay safe</a>.</p></div>
+        </details>
+        <details>
+          <summary>I have not booked anything yet. Can I still use it?</summary>
+          <div><p>Yes. Choose “Help me pick” and flexible dates, or spin the wheel on the <a href="/#inspire">home page</a>. Your AI suggests places first.</p></div>
+        </details>
+        <details>
+          <summary>The prompt is long. Is that a problem?</summary>
+          <div><p>It only includes the sections you switched on, and stays under about 3,000 words with everything on. That fits easily in every major AI.</p></div>
+        </details>
+        <details>
+          <summary>Can I come back and change my answers?</summary>
+          <div><p>Yes, they are saved in this browser. To move them to another device, use “Save my answers” to download a file and “Load answers” on the other device. The file stays on your devices.</p></div>
+        </details>
+        <details>
+          <summary>Where does the weather come from?</summary>
+          <div><p>Yr.no (MET Norway) and Open-Meteo, both free. MET's service needs a header browsers cannot send, so only a hosted site with a scheduled job can use it directly; everything else shows Open-Meteo and links to Yr.</p></div>
+        </details>
+        <details>
+          <summary>Is TripForge open source?</summary>
+          <div><p>It will be, under the MIT licence.</p></div>
+        </details>
+      </div>
+    </main>
+    <!-- @footer -->
+  </body>
+</html>
