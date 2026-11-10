@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hosting guides · TripForge</title>
+    <meta name="description" content="How to host a private trip planner: Cloudflare Pages with Zero Trust email login, and why other free hosts are public." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script src="/theme-init.js"></script>
+    <script type="module" src="/src/site.ts"></script>
+  </head>
+  <body>
+    <!-- @header -->
+    <main id="main">
+      <div class="wrap narrow section prose">
+        <h1>Hosting guides</h1>
+        <p class="lead">You only need this if you chose “a hosted website”. Your AI will walk you through it too, but here is the map.</p>
+
+        <div class="warn">
+          <p>A trip planner shows when you are away from home. A hosted trip site must sit behind a <strong>real login</strong>, or contain nothing personal at all.</p>
+        </div>
+
+        <h2>Recommended: Cloudflare Pages + Zero Trust Access</h2>
+        <p>Free for small groups. Each person logs in with a one-time code sent to their email address, and nobody else can see the site.</p>
+        <ol>
+          <li>Create a free Cloudflare account.</li>
+          <li><strong>Workers &amp; Pages → Create → Pages.</strong> Either connect your private git repository, or use <em>Direct Upload</em> and drag in the folder your AI gave you.</li>
+          <li>Open <strong>Zero Trust</strong> and choose a team name. The free plan covers up to 50 users.</li>
+          <li><strong>Access → Applications → Add an application → Self-hosted.</strong> Enter your <code>&lt;project&gt;.pages.dev</code> domain.</li>
+          <li>Add a policy: <strong>Allow</strong>, include <strong>Emails</strong>, and type the addresses of everyone travelling. Type them in the Cloudflare dashboard, not in your AI chat.</li>
+          <li>Login method: <strong>One-time PIN</strong>. Session duration: <strong>1 month</strong>, so you are not logging in every day on holiday.</li>
+          <li>Add a second application for <code>*.&lt;project&gt;.pages.dev</code>, so preview deployments are locked too.</li>
+          <li>Open the site in a private window. You should see the Cloudflare login, not your trip.</li>
+        </ol>
+        <p class="muted">Cloudflare changes its dashboard from time to time. If a menu has moved, follow the latest <a href="https://developers.cloudflare.com/cloudflare-one/">Cloudflare Access documentation</a> and the <a href="https://developers.cloudflare.com/pages/">Cloudflare Pages documentation</a>.</p>
+
+        <h2>Why not GitHub Pages, Netlify or Vercel?</h2>
+        <ul>
+          <li><strong>GitHub Pages:</strong> the site is public on the internet, even if the repository is private (GitHub Enterprise Cloud is the exception).</li>
+          <li><strong>Netlify and Vercel:</strong> password protection is a paid feature. On a free plan the site is public.</li>
+        </ul>
+        <p>If you still use them, TripForge turns on <a href="/safe#public-safe">public-safe mode</a>: no names, no accommodation names, nothing that shows when your home is empty.</p>
+
+        <h2>Your own server</h2>
+        <p>Put the whole site behind server-side login over HTTPS: HTTP basic auth, or an auth proxy such as oauth2-proxy or Authelia. A JavaScript password on a static page is not security: the content is already in the browser.</p>
+
+        <h2>Keeping a single file safe</h2>
+        <ul>
+          <li>Keep it on your own devices, for example in your phone's Files app.</li>
+          <li>Send it only to people travelling with you. Anyone with the file can read all of it.</li>
+          <li>Avoid uploading it to public file-sharing links.</li>
+        </ul>
+      </div>
+    </main>
+    <!-- @footer -->
+  </body>
+</html>

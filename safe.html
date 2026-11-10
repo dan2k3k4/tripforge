@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stay safe · TripForge</title>
+    <meta name="description" content="What not to share with an AI when planning a trip, and why." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script src="/theme-init.js"></script>
+    <script type="module" src="/src/site.ts"></script>
+  </head>
+  <body>
+    <!-- @header -->
+    <main id="main">
+      <div class="wrap narrow section prose">
+        <h1>Stay safe with AI</h1>
+        <p class="lead">An AI does not need your booking reference to find you a good restaurant. Share the trip, not your identity.</p>
+
+        <div class="warn">
+          <p><strong>On a free plan, your chats may be stored and used to train future models.</strong> Treat anything you type into an AI like something you would say in a busy café.</p>
+        </div>
+
+        <h2>Never paste these</h2>
+        <ul>
+          <li>Booking references, confirmation codes, PNRs and ticket numbers</li>
+          <li>Flight or train numbers and seat numbers</li>
+          <li>Passport, ID or driving licence numbers</li>
+          <li>Full names and birthdays of anyone travelling</li>
+          <li>Phone numbers, email addresses and your home address</li>
+          <li>Card numbers, or screenshots of confirmations and tickets (they contain all of the above)</li>
+        </ul>
+        <p>Together these can be enough to change or cancel a booking, or to know when your home is empty. TripForge warns you if something you type looks like one of them.</p>
+
+        <h2>What is fine to share</h2>
+        <ul>
+          <li>Dates, the city or area you stay in, and the type of place (hotel, hut, camping)</li>
+          <li>A public hotel name, if you like, but no room numbers or door codes</li>
+          <li>Rough travel times (“we land in the afternoon”) and how you travel</li>
+          <li>What you love, your budget, food and accessibility needs</li>
+        </ul>
+
+        <h2>Before you paste the prompt</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">AI</th><th scope="col">What to look for</th></tr></thead>
+            <tbody>
+              <tr><td>ChatGPT</td><td>Temporary Chat; Settings → Data controls → “Improve the model for everyone”</td></tr>
+              <tr><td>Claude</td><td>Incognito chat; Privacy settings → the option to help improve Claude</td></tr>
+              <tr><td>Gemini</td><td>Temporary chat; the Gemini activity settings</td></tr>
+              <tr><td>Copilot, Le Chat, others</td><td>Look for “temporary”, “incognito” or “private” chats, and a model training switch in privacy settings</td></tr>
+              <tr><td>Local models</td><td>Your chats stay on your machine; web search may need a plugin</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted">Menus change often. If you cannot find a setting, search the AI's own help pages for “training” or “temporary chat”.</p>
+
+        <h2>Placeholders: the private bits stay with you</h2>
+        <p>The prompt tells your AI to leave markers like <code>[[ADD LOCALLY: hotel booking reference]]</code>. When you have your file or site, open it on your own device and replace the markers yourself, or just keep those details in your booking apps where they already are.</p>
+
+        <h2>Sharing the result</h2>
+        <ul>
+          <li><strong>A page in your AI chat:</strong> do not press Publish or Share. That makes a public link.</li>
+          <li><strong>An HTML file or PDF:</strong> anyone you send it to sees everything in it.</li>
+          <li><strong>A website:</strong> keep it behind a real login, or make it public-safe. See the <a href="/hosting">hosting guide</a>.</li>
+        </ul>
+
+        <h2 id="public-safe">Public-safe mode</h2>
+        <p>If your site has to be public (GitHub Pages, or Netlify and Vercel without a paid plan), the prompt tells your AI to leave out names, accommodation names and anything that shows when your home is empty, and to ask search engines not to index it.</p>
+      </div>
+    </main>
+    <!-- @footer -->
+  </body>
+</html>
