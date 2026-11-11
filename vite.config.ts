@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
+import { fontPreload, seo } from './vite-seo.ts';
 
 // Production headers live in public/_headers (Cloudflare Pages). `vite preview` serves the same `/*` block,
 // so the CSP is exercised locally and in the a11y run.
@@ -16,7 +17,7 @@ function pagesHeaders(): Record<string, string> {
   );
 }
 
-const PAGES = ['index', 'build', 'how', 'safe', 'hosting', 'examples', 'faq'];
+const PAGES = ['index', 'build', 'how', 'safe', 'hosting', 'examples', 'faq', '404'];
 
 // Shared header/footer without a framework: `<!-- @header -->` / `<!-- @footer -->` are swapped for the partials,
 // and the current page's nav link gets aria-current="page".
@@ -38,7 +39,7 @@ function partials(): Plugin {
 
 export default defineConfig({
   appType: 'mpa',
-  plugins: [partials()],
+  plugins: [partials(), seo(), fontPreload()],
   build: {
     rollupOptions: { input: Object.fromEntries(PAGES.map((p) => [p, resolve(import.meta.dirname, `${p}.html`)])) },
     // CSP has no 'unsafe-inline': never inline assets as data: scripts.

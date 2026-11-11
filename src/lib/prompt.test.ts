@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { FEATURES, FORMATS, HOSTS } from '../data/options';
-import { PRESETS } from '../data/presets';
-import { buildPrompt, fmtDate, nightsBetween, wordCount } from './prompt';
-import { normalize, type TripState } from './state';
+import { FEATURES, FORMATS, HOSTS } from '../data/options.ts';
+import { PRESETS } from '../data/presets.ts';
+import { buildPrompt, fmtDate, nightsBetween, wordCount } from './prompt.ts';
+import { normalize, type TripState } from './state.ts';
 
 const base = (o: Record<string, unknown> = {}): TripState =>
   normalize({ start: '2027-06-18', end: '2027-06-28', destination: 'Bergen', pace: 'balanced', ...o });

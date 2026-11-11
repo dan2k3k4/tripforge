@@ -1,4 +1,4 @@
-import { LAND_BITS, LAND_H, LAND_STEP, LAND_W } from '../data/land';
+import { LAND_BITS, LAND_H, LAND_STEP, LAND_W } from '../data/land.ts';
 
 const RAD = Math.PI / 180;
 

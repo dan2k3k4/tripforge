@@ -1,9 +1,9 @@
 import {
   AIS, BUDGET_COVERS, BUDGET_STYLE, HIKE_LEVEL, INTERESTS, PACE, PARTY, REACH, RUN_SURFACE, STAY_TYPES,
   TIME_OF_DAY, TRAVEL_MODES, VIBES, label, type FeatureId,
-} from '../data/options';
-import { findTheme } from '../data/themes';
-import { publicSafe, type TripState } from './state';
+} from '../data/options.ts';
+import { findTheme } from '../data/themes.ts';
+import { publicSafe, type TripState } from './state.ts';
 
 // Builds the prompt from blocks. Each block is a function of the state that returns markdown or ''.
 // Only enabled sections end up in the prompt, so it stays short enough for free AI tiers.

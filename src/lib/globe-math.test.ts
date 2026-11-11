@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { LAND_H, LAND_W } from '../data/land';
-import { angleDiff, landPoints, project, wrapLon } from './globe-math';
+import { LAND_H, LAND_W } from '../data/land.ts';
+import { angleDiff, landPoints, project, wrapLon } from './globe-math.ts';
 
 describe('globe maths', () => {
   it('decodes a plausible land share (about 30% of cells)', () => {

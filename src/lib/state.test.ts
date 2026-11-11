@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { defaults, missing, normalize, publicSafe } from './state';
+import { defaults, missing, normalize, publicSafe } from './state.ts';
 
 describe('normalize', () => {
   it('returns defaults for junk', () => {

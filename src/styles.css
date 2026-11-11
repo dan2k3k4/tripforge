@@ -289,6 +289,7 @@ kbd {
 .brand {
   display: inline-flex;
   align-items: center;
+  min-height: 48px;
   gap: 0.5rem;
   margin-right: auto;
   font-weight: 800;
@@ -323,8 +324,8 @@ kbd {
 .theme-toggle {
   display: inline-grid;
   place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3rem;
+  height: 3rem;
   padding: 0;
   border: 2px solid var(--ink);
   border-radius: 999px;

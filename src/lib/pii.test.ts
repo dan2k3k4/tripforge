@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { findPii, piiMessage } from './pii';
+import { findPii, piiMessage } from './pii.ts';
 
 describe('findPii', () => {
   it.each([

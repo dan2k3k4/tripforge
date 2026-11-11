@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { ALL_THEMES, findDestination, PLACES, THEMES, themeOf } from '../data/themes';
-import { flingTarget, sample, segmentAt, snapToSegment, spinTarget } from './wheel';
+import { ALL_THEMES, findDestination, PLACES, THEMES, themeOf } from '../data/themes.ts';
+import { flingTarget, sample, segmentAt, snapToSegment, spinTarget } from './wheel.ts';
 
 describe('spinTarget', () => {
   it('lands on the chosen segment from any start, always moving forward', () => {

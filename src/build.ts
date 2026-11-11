@@ -1,9 +1,9 @@
-import * as O from './data/options';
-import { PRESETS } from './data/presets';
-import { ALL_THEMES, findDestination, findTheme } from './data/themes';
-import { findPii, piiMessage } from './lib/pii';
-import { buildPrompt, wordCount } from './lib/prompt';
-import { defaults, emptyLeg, emptyStay, missing, normalize, type TripState } from './lib/state';
+import * as O from './data/options.ts';
+import { PRESETS } from './data/presets.ts';
+import { ALL_THEMES, findDestination, findTheme } from './data/themes.ts';
+import { findPii, piiMessage } from './lib/pii.ts';
+import { buildPrompt, wordCount } from './lib/prompt.ts';
+import { defaults, emptyLeg, emptyStay, missing, normalize, type TripState } from './lib/state.ts';
 
 const STORE = 'tripforge:answers:v1';
 const STEP_TITLES = ['Basics', 'Stays & travel', 'What you love', 'Features', 'Format', 'Look & feel'];
