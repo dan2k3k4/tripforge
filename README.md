@@ -8,6 +8,8 @@ See [SPEC.md](SPEC.md) for every product decision.
 
 ## Develop
 
+Use **pnpm** (not yarn or npm). `packageManager` pins the version and pnpm switches to it automatically; Node 24+.
+
 ```sh
 pnpm install
 pnpm dev          # http://localhost:5173
@@ -28,7 +30,9 @@ pnpm a11y         # axe WCAG 2.2 AA on every page/step, 390 + 1366 px, light + d
 | `src/lib/prompt.ts` | Builds the prompt from the answers. Pure, fully unit-tested. |
 | `src/lib/state.ts` | Answer schema, defaults, validation of anything loaded (storage, imported file, URL), required fields. |
 | `src/lib/pii.ts` | "Looks like a booking code / phone / address" hints. Warns, never blocks. |
-| `src/data/` | Options, holiday themes and destinations for the wheel, example presets. |
+| `src/data/` | Options, ~300 holiday destinations with coordinates (wheel + globe), example presets, `land.ts` (generated). |
+| `src/globe.ts` | Pixel globe: a 168 px canvas scaled up with `image-rendering: pixelated`, drag/keyboard to spin. |
+| `scripts/landmask.mjs` | Regenerates `src/data/land.ts`, a 2° land bitmap from Natural Earth (`world-atlas`). |
 | `src/build.ts` | The builder form. `src/home.ts` the wheel. `src/examples.ts` the examples page. |
 | `public/_headers` | Cloudflare Pages headers: strict CSP and friends. |
 
@@ -36,7 +40,7 @@ No runtime dependencies. Vanilla TypeScript, native `<dialog>`, `popover`, `<tem
 
 ## Deploy
 
-Cloudflare Pages, git-connected: build command `pnpm build`, output `dist`. The site is public on purpose: it holds no data.
+Cloudflare Pages, git-connected: framework preset *None*, build command `pnpm build`, output directory `dist`. The site is public on purpose: it holds no data. Pages picks pnpm from `pnpm-lock.yaml`; if a build log shows `yarn` or an old pnpm, set the environment variables `NODE_VERSION=24` and `PNPM_VERSION=12.18.0`.
 
 ## Privacy, by construction
 

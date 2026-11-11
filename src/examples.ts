@@ -1,4 +1,4 @@
-import { label, FEATURES, FORMATS, INTERESTS, PACE } from './data/options';
+import { label, FEATURES, FORMATS, INTERESTS, PACE, PARTY } from './data/options';
 import { PRESETS } from './data/presets';
 import { buildPrompt, fmtDate, wordCount } from './lib/prompt';
 
@@ -16,7 +16,7 @@ for (const p of PRESETS) {
   const rows: [string, string][] = [
     ['Where', s.multiStay ? s.stays.map((x) => x.place).join(' → ') : s.destination],
     ['When', when],
-    ['Who', `${s.travellers} · ${s.party}${s.kidAges ? ` (kids ${s.kidAges})` : ''}`],
+    ['Who', `${s.travellers} travellers, ${label(PARTY, s.party).toLowerCase()}${s.kidAges ? ` (kids aged ${s.kidAges})` : ''}`],
     ['Pace', label(PACE, s.pace)],
     ['Loves', s.interests.map((i) => label(INTERESTS, i)).join(', ')],
     ['Extras', s.features.map((f) => label(FEATURES, f)).join(', ')],

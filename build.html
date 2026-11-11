@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Build my prompt · TripForge</title>
+    <title>Build my prompt | TripForge</title>
     <meta name="description" content="Answer a few questions about your trip and get a prompt to paste into your own AI. Nothing leaves your browser." />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -21,7 +21,7 @@
           <svg viewBox="0 0 600 46">
             <path class="track" id="progress-track" d="M14 30 C 120 6, 220 6, 300 24 S 480 40, 586 16" />
             <path class="flag" d="M584 4v14l12-4Z" />
-            <g class="plane-g" id="progress-plane"><path class="plane" d="M-14-3 10-3 16-8h4l-3 8 3 8h-4L10 3h-24l-4 5h-4l2-8-2-8h4Z" /></g>
+            <g class="plane-g" id="progress-plane"><path class="plane" transform="scale(.7)" d="M22 0c0-1.6-1.6-2.6-4-2.6H6L-6-16h-4l5 13.4h-10l-4-5h-3l2 7.6-2 7.6h3l4-5h10L-10 16h4L6 2.6h12c2.4 0 4-1 4-2.6Z" /></g>
           </svg>
         </div>
         <nav class="step-nav" aria-label="Form steps">
@@ -97,8 +97,9 @@
 
             <div class="row">
               <div class="field">
-                <label for="home">Travelling from <span class="hint">Country or city is enough. No street address.</span></label>
-                <input type="text" id="home" name="home" placeholder="e.g. Zurich, Switzerland" maxlength="300" />
+                <label for="home">Travelling from</label>
+                <input type="text" id="home" aria-describedby="home-hint" name="home" placeholder="e.g. Zurich, Switzerland" maxlength="300" />
+                <span class="hint" id="home-hint">Country or city is enough. No street address.</span>
               </div>
               <div class="field">
                 <label for="travellers">How many travellers?</label>
@@ -111,8 +112,9 @@
                 <select id="party" name="party" data-options="PARTY" data-empty="Choose…"></select>
               </div>
               <div class="field" data-when="party:family">
-                <label for="kidAges">Kids' ages <span class="hint">Ages only, no names.</span></label>
-                <input type="text" id="kidAges" name="kidAges" placeholder="e.g. 4 and 9" maxlength="60" />
+                <label for="kidAges">Kids' ages</label>
+                <input type="text" id="kidAges" aria-describedby="kidAges-hint" name="kidAges" placeholder="e.g. 4 and 9" maxlength="60" />
+                <span class="hint" id="kidAges-hint">Ages only, no names.</span>
               </div>
             </div>
           </section>
@@ -136,8 +138,9 @@
                   <select id="stayType" name="stayType" data-options="STAY_TYPES" data-empty="Choose…"></select>
                 </div>
                 <div class="field">
-                  <label for="stayArea">Area or name <span class="hint">e.g. “old town” or a hotel name</span></label>
-                  <input type="text" id="stayArea" name="stayArea" maxlength="300" />
+                  <label for="stayArea">Area or name</label>
+                  <input type="text" id="stayArea" aria-describedby="stayArea-hint" name="stayArea" maxlength="300" />
+                <span class="hint" id="stayArea-hint">e.g. “old town” or a hotel name</span>
                 </div>
               </div>
             </div>
@@ -206,8 +209,9 @@
 
             <div class="row">
               <div class="field">
-                <label for="diet">Food needs <span class="hint">e.g. vegetarian, no nuts</span></label>
-                <input type="text" id="diet" name="diet" maxlength="300" />
+                <label for="diet">Food needs</label>
+                <input type="text" id="diet" aria-describedby="diet-hint" name="diet" maxlength="300" />
+                <span class="hint" id="diet-hint">e.g. vegetarian, no nuts</span>
               </div>
             </div>
             <div class="field">
@@ -355,8 +359,9 @@
 
         <aside class="preview preview-side" aria-labelledby="preview-title">
           <div class="preview-head">
+            <svg class="copied-stamp" viewBox="0 0 150 64" aria-hidden="true" focusable="false"><rect x="3" y="3" width="144" height="58" rx="8" class="cs-line" /><rect x="9" y="9" width="132" height="46" rx="4" class="cs-line" /><text x="75" y="29" text-anchor="middle">READY FOR</text><text x="75" y="46" text-anchor="middle">DEPARTURE</text></svg>
             <h2 id="preview-title">Your prompt</h2>
-            <p class="hint"><span data-words>0</span> words · updates as you type</p>
+            <p class="hint"><span data-words>0</span> words, updated as you type</p>
           </div>
           <div class="preview-body" tabindex="0" role="region" aria-label="Prompt preview"><pre data-prompt></pre></div>
           <div class="preview-foot">
@@ -390,6 +395,7 @@
         <div class="preview">
           <div class="preview-head">
             <button class="btn btn-ghost btn-small dialog-close" type="button" id="close-preview">Close</button>
+            <svg class="copied-stamp" viewBox="0 0 150 64" aria-hidden="true" focusable="false"><rect x="3" y="3" width="144" height="58" rx="8" class="cs-line" /><rect x="9" y="9" width="132" height="46" rx="4" class="cs-line" /><text x="75" y="29" text-anchor="middle">READY FOR</text><text x="75" y="46" text-anchor="middle">DEPARTURE</text></svg>
             <h2 id="dialog-title">Your prompt</h2>
             <p class="hint"><span data-words>0</span> words</p>
           </div>
