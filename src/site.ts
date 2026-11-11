@@ -1,4 +1,5 @@
 // Shared by every page: CSS and the light / dark / auto theme toggle.
+import '@fontsource-variable/bricolage-grotesque/opsz.css';
 import './styles.css';
 
 const KEY = 'tripforge:theme';

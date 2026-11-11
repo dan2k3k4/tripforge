@@ -272,7 +272,10 @@ function render() {
   state = readForm();
   promptText = buildPrompt(state);
   const words = String(wordCount(promptText));
-  for (const pre of $$('[data-prompt]')) pre.textContent = promptText;
+  for (const pre of $$('[data-prompt]')) {
+    if (pre.textContent !== promptText) for (const st of $$('.copied-stamp')) st.classList.remove('stamped'); // changed since copying
+    pre.textContent = promptText;
+  }
   for (const w of $$('[data-words]')) w.textContent = words;
   updateVisibility(state);
   try {
@@ -370,6 +373,11 @@ async function copy() {
   try {
     await navigator.clipboard.writeText(promptText);
     status('Copied. Paste it into a new chat with your AI.');
+    for (const st of $$('.copied-stamp')) {
+      st.classList.remove('stamped');
+      void st.getBoundingClientRect(); // restart the stamp animation
+      st.classList.add('stamped');
+    }
   } catch {
     // Clipboard blocked: select the text so the person can copy it by hand.
     const side = $('.preview-side');

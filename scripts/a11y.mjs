@@ -76,8 +76,10 @@ for (const vp of VIEWPORTS) {
 
       if (path === '/') {
         await page.click('#spin');
-        await page.waitForSelector('#use-dest:not([hidden])');
-        report(`${where} postcard`, await axe(page).analyze());
+        await page.waitForSelector('#wheel-use:not([hidden])');
+        await page.click('#globe-random');
+        await page.waitForSelector('#globe-use:not([hidden])');
+        report(`${where} postcards`, await axe(page).analyze());
       }
 
       for (const e of errors) {
