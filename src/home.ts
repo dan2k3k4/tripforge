@@ -1,6 +1,6 @@
-import { ALL_THEMES, findTheme, PLACES, themeOf, type Destination, type Theme } from './data/themes';
-import { mountGlobe } from './globe';
-import { flingTarget, sample, snapToSegment, spinTarget } from './lib/wheel';
+import { ALL_THEMES, findTheme, PLACES, themeOf, type Destination, type Theme } from './data/themes.ts';
+import { mountGlobe } from './globe.ts';
+import { flingTarget, sample, snapToSegment, spinTarget } from './lib/wheel.ts';
 
 const ON_WHEEL = 10;
 const NS = 'http://www.w3.org/2000/svg';

@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FAQ | TripForge</title>
-    <meta name="description" content="Questions about TripForge, your data, and which AI to use." />
+    <meta name="description" content="Answers about TripForge: does it store your data, which AI works best, what if your AI cannot browse, where the weather comes from, and more." />
     <meta name="color-scheme" content="light dark" />
+    <!-- @seo -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script src="/theme-init.js"></script>
     <script type="module" src="/src/site.ts"></script>
@@ -15,7 +16,21 @@
     <main id="main">
       <div class="wrap narrow section faq">
         <h1>Questions</h1>
-        <details id="data" open>
+        <details id="what" open>
+          <summary>What is TripForge?</summary>
+          <div>
+            <p>TripForge is a free trip-planning prompt builder. You answer a few questions about your holiday, and it writes one prompt for your own AI assistant, such as Claude, ChatGPT or Gemini. That AI then researches the trip with you and builds a private planner: a single HTML file, a page in your chat, a printable PDF or a website behind a login.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Is TripForge free?</summary>
+          <div><p>Yes. There is no account, no subscription and no advertising. Your own AI may have its own plans and limits; the free tiers of the major assistants work for most trips.</p></div>
+        </details>
+        <details>
+          <summary>Does TripForge book flights or hotels?</summary>
+          <div><p>No. It never books, buys or contacts anyone. It helps you and your AI plan; you book through your usual sites and keep the confirmations in your booking apps.</p></div>
+        </details>
+        <details id="data">
           <summary>Do you store my data?</summary>
           <div>
             <p>No. TripForge has no server, no accounts and no analytics. Your answers are saved in your own browser (local storage) so you can come back later, and you can clear them with “Start over”.</p>

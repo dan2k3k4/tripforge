@@ -6,7 +6,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { chromium } from 'playwright';
 import { preview } from 'vite';
 
-const PAGES = ['/', '/build', '/how', '/safe', '/hosting', '/examples', '/faq'];
+const PAGES = ['/', '/build', '/how', '/safe', '/hosting', '/examples', '/faq', '/404'];
 const VIEWPORTS = [
   { name: 'phone', width: 390, height: 844 },
   { name: 'desktop', width: 1366, height: 900 },

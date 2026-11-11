@@ -1,4 +1,4 @@
-import { normalize, type TripState } from '../lib/state';
+import { normalize, type TripState } from '../lib/state.ts';
 
 // Fictional example trips. No real people, bookings or addresses.
 export type Preset = { id: string; title: string; blurb: string; state: TripState };

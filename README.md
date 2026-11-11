@@ -40,6 +40,10 @@ No runtime dependencies. Vanilla TypeScript, native `<dialog>`, `popover`, `<tem
 
 ## Deploy
 
+The site URL used for canonical links, social tags, `sitemap.xml`, `robots.txt` and `llms.txt` comes from the `SITE_URL` build variable (default `https://trip-forge.pages.dev`). When you move to a custom domain, set `SITE_URL=https://your.domain` in the Pages environment variables and redeploy.
+
+`node scripts/brand-assets.mjs` (after `pnpm build`) re-renders the PNG icons and the 1200x630 share image `public/og.png` from the real hero.
+
 Cloudflare Pages, git-connected: framework preset *None*, build command `pnpm build`, output directory `dist`. The site is public on purpose: it holds no data. Pages picks pnpm from `pnpm-lock.yaml`; if a build log shows `yarn` or an old pnpm, set the environment variables `NODE_VERSION=24` and `PNPM_VERSION=12.18.0`.
 
 ## Privacy, by construction

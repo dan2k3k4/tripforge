@@ -2,8 +2,8 @@
 // Drag (mouse or touch) to spin, tap a yellow pixel to open its postcard, or use the arrow keys.
 // ponytail: 2D orthographic projection on a canvas instead of three.js; a few KB instead of ~150 KB.
 
-import type { Destination } from './data/themes';
-import { angleDiff, landPoints, project, wrapLon } from './lib/globe-math';
+import type { Destination } from './data/themes.ts';
+import { angleDiff, landPoints, project, wrapLon } from './lib/globe-math.ts';
 
 const SIZE = 168; // internal pixels; CSS scales it up
 const R = 78;

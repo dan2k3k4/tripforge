@@ -2,8 +2,8 @@ import {
   AIS, BUDGET_COVERS, BUDGET_STYLE, BUILDERS, CLOCKS, CURRENCIES, FEATURES, FORMATS, HIKE_LEVEL, HOSTS, INTERESTS,
   LANGUAGES, MONTHS, PACE, PARTY, REACH, RUN_SURFACE, SCHEMES, STAY_TYPES, TIME_OF_DAY, TRAVEL_MODES, UNITS, VIBES,
   type Option,
-} from '../data/options';
-import { ALL_THEMES } from '../data/themes';
+} from '../data/options.ts';
+import { ALL_THEMES } from '../data/themes.ts';
 
 export type Stay = { place: string; from: string; to: string; type: string; area: string };
 export type Leg = { from: string; to: string; date: string; mode: string; time: string };
