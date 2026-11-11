@@ -1,5 +1,5 @@
 // axe-core (WCAG 2.2 AA) on every built page, at phone and desktop width, light and dark,
-// plus each builder step, the mobile preview dialog and the wheel result.
+// plus each builder step, the full prompt view and the wheel and globe results.
 // Also fails on console errors (including CSP violations) and horizontal page scroll.
 // Usage: pnpm build && pnpm a11y
 import AxeBuilder from '@axe-core/playwright';
@@ -67,11 +67,10 @@ for (const vp of VIEWPORTS) {
         await page.click('[data-goto="0"]');
         await page.locator('[data-copy]').filter({ visible: true }).first().click();
         report(`${where} errors`, await axe(page).analyze());
-        if (vp.name === 'phone') {
-          await page.click('#open-preview');
-          report(`${where} dialog`, await axe(page).include('#preview-dialog').analyze());
-          await page.click('#close-preview');
-        }
+        await page.locator('[data-review]').filter({ visible: true }).first().click();
+        report(`${where} full prompt`, await axe(page).analyze());
+        await page.locator('[data-back]').first().click();
+        await page.waitForSelector('#form-view:not([hidden])');
       }
 
       if (path === '/') {
