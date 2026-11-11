@@ -1868,33 +1868,49 @@ textarea:focus-visible {
   display: none;
 }
 
-dialog.preview-dialog {
-  width: min(100% - 1.5rem, 44rem);
-  max-height: calc(100dvh - 1.5rem);
-  padding: 0;
-  border: 0;
-  border-radius: calc(var(--radius) + 4px);
-  background: transparent;
-  color: var(--ink);
+.review {
+  padding-block: 1.5rem 2.5rem;
 }
 
-dialog.preview-dialog[open] {
-  display: flex;
-  flex-direction: column;
+.preview.preview-full {
+  position: static;
+  max-height: none;
+  max-width: 60rem;
+  margin-inline: auto;
 }
 
-dialog.preview-dialog .preview {
-  max-height: calc(100dvh - 1.5rem);
-  flex: 1;
+.preview-full .preview-head {
+  padding: 1.25rem clamp(1rem, 3vw, 2rem) 1rem;
 }
 
-dialog::backdrop {
-  background: rgb(11 20 48 / 60%);
-  backdrop-filter: blur(3px);
+.preview-full .preview-head h1 {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  margin: 0.75rem 0 0.25rem;
 }
 
-.dialog-close {
-  float: right;
+.preview-full .copied-stamp {
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 9.5rem;
+}
+
+.preview-full .preview-body {
+  overflow: visible;
+}
+
+.preview-full pre {
+  max-width: 80ch;
+  padding: 1.25rem clamp(1rem, 3vw, 2rem);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.preview-full .preview-foot {
+  padding: 1.25rem clamp(1rem, 3vw, 2rem);
+}
+
+.preview-full .preview-foot h2 {
+  font-size: 1.4rem;
 }
 
 /* Examples */

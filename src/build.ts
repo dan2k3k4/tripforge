@@ -217,7 +217,7 @@ function go(i: number, focus = true) {
   });
   $<HTMLButtonElement>('#prev').hidden = current === 0;
   const next = $<HTMLButtonElement>('#next');
-  next.textContent = current === steps.length - 1 ? 'Preview prompt' : `Next: ${STEP_TITLES[current + 1]}`;
+  next.textContent = current === steps.length - 1 ? 'View the full prompt' : `Next: ${STEP_TITLES[current + 1]}`;
   placePlane();
   if (focus) {
     $('h2', steps[current]).focus();
@@ -232,8 +232,7 @@ navList.addEventListener('click', (e) => {
 $('#prev').addEventListener('click', () => go(current - 1));
 $('#next').addEventListener('click', () => {
   if (current < steps.length - 1) return go(current + 1);
-  if (matchMedia('(min-width: 1100px)').matches) $('.preview-side .preview-body').focus();
-  else openDialog();
+  openReview();
 });
 
 // ---------------- Render loop ----------------
@@ -357,7 +356,10 @@ function showMissing(): boolean {
     }
   }
   errorsBox.append(p, ul);
-  if (dialog.open) dialog.close();
+  if (!review.hidden) {
+    history.replaceState(null, '', location.pathname); // errors live in the form
+    showView(false, false);
+  }
   errorsBox.focus();
   errorsBox.scrollIntoView({ block: 'center' });
   return false;
@@ -380,9 +382,8 @@ async function copy() {
     }
   } catch {
     // Clipboard blocked: select the text so the person can copy it by hand.
-    const side = $('.preview-side');
-    if (!dialog.open && side.offsetParent === null) dialog.showModal(); // side panel is hidden on small screens
-    const pre = $(dialog.open ? '#preview-dialog [data-prompt]' : '.preview-side [data-prompt]');
+    if (review.hidden && $('.preview-side').offsetParent === null) openReview(); // side panel is hidden on small screens
+    const pre = $(review.hidden ? '.preview-side [data-prompt]' : '#review [data-prompt]');
     const range = document.createRange();
     range.selectNodeContents(pre);
     getSelection()?.removeAllRanges();
@@ -411,18 +412,45 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ---------------- Mobile preview dialog ----------------
+// ---------------- Full prompt view (#prompt) ----------------
+// The prompt is always live in the side panel; this view gives it the whole page to read, copy or download.
+// It is a history entry, so the browser's Back button returns to the form too.
 
-const dialog = $<HTMLDialogElement>('#preview-dialog');
-function openDialog() {
+const formView = $('#form-view');
+const review = $('#review');
+
+function showView(full: boolean, focus = true) {
+  formView.hidden = full;
+  review.hidden = !full;
+  if (!focus) return;
+  if (full) {
+    scrollTo(0, 0);
+    $('#review-title').focus();
+  } else {
+    go(current);
+  }
+}
+
+function openReview() {
   render();
   status('');
-  dialog.showModal();
+  if (location.hash !== '#prompt') history.pushState({ review: true }, '', '#prompt');
+  showView(true);
 }
-$('#open-preview').addEventListener('click', openDialog);
-$('#close-preview').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', (e) => {
-  if (e.target === dialog) dialog.close(); // click on the backdrop
+
+function closeReview() {
+  if (history.state?.review) history.back(); // popstate below switches the view
+  else {
+    history.replaceState(null, '', location.pathname);
+    showView(false);
+  }
+}
+
+addEventListener('popstate', () => showView(location.hash === '#prompt'));
+document.addEventListener('click', (e) => {
+  const t = e.target as Element;
+  if (t.closest('[data-review]')) openReview();
+  if (t.closest('[data-back]')) closeReview();
 });
 
 // ---------------- Save / load / reset ----------------
@@ -500,3 +528,4 @@ attachPii(form);
 writeForm(fromUrl(loadSaved()));
 render();
 go(0, false);
+if (location.hash === '#prompt') showView(true, false);

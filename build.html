@@ -15,6 +15,7 @@
   <body>
     <!-- @header -->
     <main id="main">
+      <div id="form-view">
       <div class="wrap builder-head">
         <h1>Build my prompt</h1>
         <p class="lead">Only the first few questions are needed. Everything else is optional. Your answers are saved in this browser only.</p>
@@ -363,6 +364,7 @@
             <svg class="copied-stamp" viewBox="0 0 150 64" aria-hidden="true" focusable="false"><rect x="3" y="3" width="144" height="58" rx="8" class="cs-line" /><rect x="9" y="9" width="132" height="46" rx="4" class="cs-line" /><text x="75" y="29" text-anchor="middle">READY FOR</text><text x="75" y="46" text-anchor="middle">DEPARTURE</text></svg>
             <h2 id="preview-title">Your prompt</h2>
             <p class="hint"><span data-words>0</span> words, updated as you type</p>
+            <button class="link-btn" type="button" data-review>Open the full prompt</button>
           </div>
           <div class="preview-body" tabindex="0" role="region" aria-label="Prompt preview"><pre data-prompt></pre></div>
           <div class="preview-foot">
@@ -388,29 +390,40 @@
 
       <div class="mobile-bar">
         <p class="status mobile-status" role="status" data-status></p>
-        <button class="btn btn-ghost" type="button" id="open-preview">Preview prompt</button>
+        <button class="btn btn-ghost" type="button" data-review>View prompt</button>
         <button class="btn" type="button" data-copy>Copy prompt</button>
       </div>
 
-      <dialog class="preview-dialog" id="preview-dialog" aria-labelledby="dialog-title">
-        <div class="preview">
+      </div>
+
+      <section class="wrap review" id="review" aria-labelledby="review-title" hidden>
+        <div class="preview preview-full">
           <div class="preview-head">
-            <button class="btn btn-ghost btn-small dialog-close" type="button" id="close-preview">Close</button>
             <svg class="copied-stamp" viewBox="0 0 150 64" aria-hidden="true" focusable="false"><rect x="3" y="3" width="144" height="58" rx="8" class="cs-line" /><rect x="9" y="9" width="132" height="46" rx="4" class="cs-line" /><text x="75" y="29" text-anchor="middle">READY FOR</text><text x="75" y="46" text-anchor="middle">DEPARTURE</text></svg>
-            <h2 id="dialog-title">Your prompt</h2>
-            <p class="hint"><span data-words>0</span> words</p>
-          </div>
-          <div class="preview-body" tabindex="0" role="region" aria-label="Prompt preview"><pre data-prompt></pre></div>
-          <div class="preview-foot">
+            <button class="btn btn-ghost btn-small" type="button" data-back>Back to form</button>
+            <h1 id="review-title" tabindex="-1">Your prompt</h1>
+            <p class="lead"><span data-words>0</span> words. Copy it, start a new chat with your AI, and paste it in.</p>
             <div class="actions">
               <button class="btn" type="button" data-copy>Copy prompt</button>
               <button class="btn btn-ghost" type="button" data-download>Download .md</button>
             </div>
             <p class="status" role="status" data-status></p>
-            <p class="hint">Before you paste: use a temporary chat, switch off training on your chats, and never paste tickets or confirmations. <a href="/safe">Why</a></p>
+          </div>
+          <div class="preview-body"><pre data-prompt></pre></div>
+          <div class="preview-foot">
+            <h2>Before you paste</h2>
+            <ul>
+              <li>Use a temporary or incognito chat if your AI has one.</li>
+              <li>Switch off “use my chats for training” in its settings.</li>
+              <li>Never paste booking confirmations, tickets or screenshots of them. <a href="/safe">Why</a></li>
+            </ul>
+            <div class="actions">
+              <button class="btn" type="button" data-copy>Copy prompt</button>
+              <button class="btn btn-ghost" type="button" data-back>Back to form</button>
+            </div>
           </div>
         </div>
-      </dialog>
+      </section>
 
       <template id="tpl-stays">
         <fieldset class="repeat-row" data-row="stays">
