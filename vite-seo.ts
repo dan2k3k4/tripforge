@@ -164,7 +164,7 @@ Key facts:
 - Planner features: day-by-day itinerary, weather (Yr.no / MET Norway and Open-Meteo, with climate fallback), webcams, maps, morning runs, hikes, packing lists, pre-trip checklist, public holidays, local events, phrases, currency converter, emergency card, calendar export.
 - Privacy by design: the prompt tells the AI never to ask for booking references, flight numbers, passport numbers, names, phone numbers or addresses, and to leave placeholders the traveller fills in on their own device. ${NAME} warns users when text they type looks like personal information.
 - Destination ideas: a holiday-theme wheel (Christmas markets, New Year's Eve, Easter and spring blossom, summer sun, autumn colours, ski and snow, carnival and festivals, northern lights) and a pixel globe with about 300 destinations.
-- The source code will be published under the MIT licence.
+- Open source under the MIT licence: https://github.com/dan2k3k4/tripforge
 
 ## Pages
 

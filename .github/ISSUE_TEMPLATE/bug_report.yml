@@ -1,0 +1,21 @@
+name: Bug report
+description: Something on the site does not work as expected.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead? Please do not paste your prompt if it contains personal details.
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      placeholder: /build
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Safari 19 on iPhone

@@ -1,0 +1,11 @@
+name: Idea or feature request
+description: Suggest an improvement, a new destination, or better prompt wording.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like?
+      description: Describe the idea and who it helps.
+    validations:
+      required: true

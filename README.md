@@ -26,14 +26,14 @@ pnpm a11y         # axe WCAG 2.2 AA on every page/step, 390 + 1366 px, light + d
 
 | Path | What |
 |---|---|
-| `*.html` | The seven pages. `<!-- @header -->` / `<!-- @footer -->` are filled from `partials/` at build time. |
+| `*.html` | The eight pages. `<!-- @header -->` / `<!-- @footer -->` are filled from `partials/` at build time. |
 | `src/lib/prompt.ts` | Builds the prompt from the answers. Pure, fully unit-tested. |
 | `src/lib/state.ts` | Answer schema, defaults, validation of anything loaded (storage, imported file, URL), required fields. |
 | `src/lib/pii.ts` | "Looks like a booking code / phone / address" hints. Warns, never blocks. |
 | `src/data/` | Options, ~300 holiday destinations with coordinates (wheel + globe), example presets, `land.ts` (generated). |
 | `src/globe.ts` | Pixel globe: a 168 px canvas scaled up with `image-rendering: pixelated`, drag/keyboard to spin. |
 | `scripts/landmask.mjs` | Regenerates `src/data/land.ts`, a 2° land bitmap from Natural Earth (`world-atlas`). |
-| `src/build.ts` | The builder form. `src/home.ts` the wheel. `src/examples.ts` the examples page. |
+| `src/build.ts` | The builder form. `src/home.ts` the wheel and globe. The examples page is pre-rendered by `vite-seo.ts`. |
 | `public/_headers` | Cloudflare Pages headers: strict CSP and friends. |
 
 No runtime dependencies. Vanilla TypeScript, native `<dialog>`, `popover`, `<template>`, `<details>`, CSS custom properties and view transitions.
@@ -53,9 +53,13 @@ Cloudflare Pages, git-connected: framework preset *None*, build command `pnpm bu
 - The only URL parameters read are `mode`, `theme`, `dest` and `example`, and only values from the static lists are accepted.
 - Imported files are size-capped and every field is validated against the schema.
 
+## Contributing
+
+Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md) first. Security issues: see [SECURITY.md](SECURITY.md).
+
 ## Licence
 
-MIT
+[MIT](LICENSE). Made by [Dan Lemon](https://danlemon.com).
 
 ### Cloudflare zone settings
 
