@@ -140,6 +140,16 @@ function examplesHtml(): string {
   }).join('\n        ');
 }
 
+/** Home page shortcuts into the builder: the first three example trips; /examples has them all. */
+function exampleCardsHtml(): string {
+  return PRESETS.slice(0, 3).map(
+    (p) => `<a class="pass" href="/build?example=${p.id}">
+              <span class="pass-main"><strong>${esc(p.title)}</strong><span>${esc(p.blurb)}</span></span>
+              <span class="pass-stub" aria-hidden="true"><span class="pass-gate">Try it</span></span>
+            </a>`,
+  ).join('\n            ');
+}
+
 function llmsTxt(descriptions: Record<string, string>): string {
   const pages = SEO_PAGES.map((p) => `- [${p.name}](${SITE}${p.path === '/' ? '/' : p.path}): ${descriptions[p.file] ?? ''}`).join('\n');
   const examples = PRESETS.map((p) => `- [${p.title}](${SITE}/examples#ex-${p.id}): ${p.blurb}`).join('\n');
@@ -175,7 +185,7 @@ export function seo(): Plugin {
       handler(html, ctx) {
         const file = ctx.path.replace(/^\//, '').replace(/\.html$/, '') || 'index';
         descriptions[file] = meta(html, 'description');
-        return html.replace('<!-- @seo -->', headTags(html, file)).replace('<!-- @examples -->', examplesHtml());
+        return html.replace('<!-- @seo -->', headTags(html, file)).replace('<!-- @examples -->', examplesHtml()).replace('<!-- @example-cards -->', exampleCardsHtml());
       },
     },
     generateBundle() {

@@ -1224,6 +1224,22 @@ kbd {
   font-size: 1.15rem;
 }
 
+.steps-row {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+.examples-title {
+  margin-top: 2rem;
+}
+
+.examples-row .pass-main strong {
+  font-size: 1.15rem;
+}
+
+.examples-row .pass-stub {
+  min-width: 4.5rem;
+}
+
 .steps-list h3 {
   margin-bottom: 0.25rem;
 }

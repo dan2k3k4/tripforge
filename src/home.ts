@@ -127,7 +127,8 @@ spinBtn.addEventListener('click', spinRandom);
   const box = wheel.parentElement!;
   let dragging = false;
   let lastAngle = 0;
-  let travelled = 0;
+  let startX = 0;
+  let startY = 0;
   let samples: { a: number; t: number }[] = [];
   const angleAt = (e: PointerEvent) => {
     const r = wheel.getBoundingClientRect();
@@ -136,7 +137,8 @@ spinBtn.addEventListener('click', spinRandom);
   box.addEventListener('pointerdown', (e) => {
     if (spinning) return;
     dragging = true;
-    travelled = 0;
+    startX = e.clientX;
+    startY = e.clientY;
     lastAngle = angleAt(e);
     samples = [{ a: rotation, t: e.timeStamp }];
     box.setPointerCapture(e.pointerId);
@@ -147,7 +149,6 @@ spinBtn.addEventListener('click', spinRandom);
     const a = angleAt(e);
     const delta = ((a - lastAngle + 540) % 360) - 180;
     lastAngle = a;
-    travelled += Math.abs(delta);
     rotation += delta;
     spinGroup.style.transform = `rotate(${rotation}deg)`;
     samples.push({ a: rotation, t: e.timeStamp });
@@ -157,7 +158,8 @@ spinBtn.addEventListener('click', spinRandom);
     if (!dragging) return;
     dragging = false;
     spinGroup.classList.remove('dragging');
-    if (travelled < 3) return spinRandom(); // a tap
+    // A tap or click spins. Measured in pixels, not degrees: near the hub a 1px wobble is many degrees.
+    if (Math.hypot(e.clientX - startX, e.clientY - startY) < 8) return spinRandom();
     const first = samples[0];
     const v = first && e.timeStamp > first.t ? (rotation - first.a) / (e.timeStamp - first.t) : 0;
     if (Math.abs(v) > 0.25) {
