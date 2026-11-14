@@ -2028,3 +2028,13 @@ textarea:focus-visible {
     navigation: none;
   }
 }
+
+/* High Contrast swaps author backgrounds for Canvas, so states shown only by fill vanish. Restore them with system colors. */
+@media (forced-colors: active) {
+  .chip input:checked + span,
+  .site-nav a[aria-current='page'],
+  .step-nav button[aria-current='step'] {
+    background: Highlight;
+    color: HighlightText;
+  }
+}

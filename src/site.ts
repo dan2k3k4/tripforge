@@ -30,6 +30,13 @@ function apply(mode: Mode, announce = false) {
 let current = read();
 apply(current);
 
+// Another tab changed the theme: follow it.
+addEventListener('storage', (e) => {
+  if (e.key !== KEY) return;
+  current = read();
+  apply(current);
+});
+
 document.addEventListener('click', (e) => {
   const btn = (e.target as Element).closest('[data-theme-toggle]');
   if (!btn) return;
